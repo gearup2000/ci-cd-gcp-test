@@ -1,0 +1,46 @@
+#-----------------------------------------
+# CloudBuild Pipeline for Production CloudRun
+#-----------------------------------------
+steps:
+# Docker Build Image request, the arguments are:
+# 'build' - is the entrypoint to the Docker cloud builder,
+# '-t' - is the Docker flag,
+# '$_SERVICE_IMAGE' - is the name of the image to be built in Artifact Registry.
+# '.' - is the location of the source code, which indicates the source code is in the current working directory. 
+# '-f' - indicates to use a file as a source,
+# 'Dockerfile' - indicates the name of a Dockerfile to use. In this case the name is "Dockerfile".
+
+  - name: gcr.io/cloud-builders/docker
+    id  : BUILD
+    args: ['build', '-t', '$_SERVICE_IMAGE', '.', '-f', 'Dockerfile']
+
+# Docker Push Image to Artifact Registry Service, the arguments are:
+# 'push' - push the image to Artifact Registry Service.
+# '$_SERVICE_IMAGE' - is the name of the image to be pushed to Artifact Registry.
+  - name: gcr.io/cloud-builders/docker
+    id  : PUSH
+    args: ['push', '$_SERVICE_IMAGE']
+
+# Docker Deploy image to the Cloud Run
+# the arguments are: Update Cloud Run environment variables and other configuration settings.
+  - name: gcr.io/cloud-builders/gcloud
+    id  : DEPLOY
+    args:
+      - run
+      - services
+      - update
+      - $_SERVICE_NAME
+      - --project=$_SERVICE_PROJECT
+      - --region=$_SERVICE_REGION
+      - --image=$_SERVICE_IMAGE
+
+images: # Display the image in the build results.
+- $_SERVICE_IMAGE
+
+substitutions:
+    _SERVICE_IMAGE    : europe-north1-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
+    _SERVICE_REGION   : europe-north1
+    _SERVICE_PROJECT  : production-341722
+    _SERVICE_NAME     : my-docker-app-production
+    _DOCKER_REGISTRY  : my-docker-repo
+    _DOCKER_IMAGENAME : myapp-production
