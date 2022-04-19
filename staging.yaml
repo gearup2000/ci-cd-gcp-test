@@ -42,5 +42,5 @@ substitutions:
     _SERVICE_REGION   : europe-north1
     _SERVICE_PROJECT  : staging-341722
     _SERVICE_NAME     : my-docker-app-staging
-    _DOCKER_REGISTRY  : my-docker-repo
+    _DOCKER_REGISTRY  : ci-cd-docker-repository
     _DOCKER_IMAGENAME : myapp-staging
