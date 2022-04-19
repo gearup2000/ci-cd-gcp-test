@@ -40,7 +40,7 @@ images: # Display the image in the build results.
 substitutions:
     _SERVICE_IMAGE    : europe-north1-docker.pkg.dev/${PROJECT_ID}/${_DOCKER_REGISTRY}/${_DOCKER_IMAGENAME}:${SHORT_SHA}
     _SERVICE_REGION   : europe-north1
-    _SERVICE_PROJECT  : production-341722
+    _SERVICE_PROJECT  : kushtov-production
     _SERVICE_NAME     : docker-app-push-to-production
     _DOCKER_REGISTRY  : ci-cd-docker-repository
-    _DOCKER_IMAGENAME : myapp-production
+    _DOCKER_IMAGENAME : app-production
