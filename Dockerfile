@@ -15,7 +15,7 @@ RUN apt-get -y install apache2
 RUN echo 'Docker Image on CloudRun<br>' > /var/www/html/index.html
 
 # Add the "Version of App 0.1" to default index.html file and change the color of the text to the DeepSkyBlue.
-RUN echo '<b><font color="DeepSkyBlue">Version of App 0.1</font></b>' >> /var/www/html/index.html
+RUN echo '<b><font color="DeepSkyBlue">Version of App 0.1 Hello from Production (main) branch</font></b>' >> /var/www/html/index.html
 
 # Run Apache service in the foreground after the container is started.
 CMD ["/usr/sbin/apache2ctl", "-D","FOREGROUND"]
