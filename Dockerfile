@@ -21,4 +21,4 @@ RUN echo '<b><font color="DeepSkyBlue">Version of App 0.1</font></b>' >> /var/ww
 CMD ["/usr/sbin/apache2ctl", "-D","FOREGROUND"]
 
 # instruct the Docker container to listen on port 80
-EXPOSE 80
+EXPOSE 8080
