@@ -20,5 +20,5 @@ RUN echo '<b><font color="DeepSkyBlue">Version of App 0.1</font></b>' >> /var/ww
 # Run Apache service in the foreground after the container is started.
 CMD ["/usr/sbin/apache2ctl", "-D","FOREGROUND"]
 
-# tells to the Docker container to listen on port 8080
-EXPOSE 8080
+# tells to the Docker container to listen on port 80
+EXPOSE 80
