@@ -42,5 +42,5 @@ substitutions:
     _SERVICE_REGION   : europe-north1
     _SERVICE_PROJECT  : production-341722
     _SERVICE_NAME     : my-docker-app-production
-    _DOCKER_REGISTRY  : my-docker-repository
+    _DOCKER_REGISTRY  : ci-cd-docker-repository
     _DOCKER_IMAGENAME : myapp-production
