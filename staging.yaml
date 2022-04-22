@@ -1,9 +1,9 @@
 #-----------------------------------------
-# CloudBuild Pipeline for Staging CloudRun
+# Cloud Build Pipeline for Staging Cloud Run
 #-----------------------------------------
 steps:
 # Docker Build Image request, the arguments are:
-# 'build' - is the entrypoint to the Docker cloud builder,
+# 'build' - is the entry point to the Docker cloud builder,
 # '-t' - is the Docker flag,
 # '$_SERVICE_IMAGE' - is the name of the image to be built in Artifact Registry.
 # '.' - is the location of the source code, which indicates the source code is in the current working directory. 
